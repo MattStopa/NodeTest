@@ -18,12 +18,34 @@ app.get('/', function (req, res) {
 })
 
 app.get('/search', function(req,res) {
-  Cat.find().where('age').gt(17).lt(66).exec(function(err, data) {
+  Cat.remove({name: '3333'}, function(err, data) {
     console.log(data)
-    res.send(data)
-
+    res.send("IT WORKED")
   })
+
+  // Cat.update({'_id': req.query._id }, {'name': "3333"},function(err, data) {
+  //   console.log(data)
+  //   res.send(data)
+  // })
+
+  // Cat.update({'_id':'581c89577b264273e477601a'}, {'name': "3333"},function(err, data) {
+  //   console.log(data)
+  //   res.send(data)
+  // })
+
+  // Cat.find({ name: /ana/}).exec(function(err, data) {
+  //   console.log(data)
+  //   res.send(data)
+  // })
 })
+
+
+
+// Text search
+// Cat.find({ name: /ana/}).exec(function(err, data) {
+//   console.log(data)
+//   res.send(data)
+// })
 
 app.get('/bananaface', function(req, res) {
   res.send(req.query)
